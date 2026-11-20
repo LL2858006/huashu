@@ -53,9 +53,7 @@ function toast(s){const t=$("#toast");t.textContent=s;t.classList.add("show");se
 document.addEventListener("click",e=>{
  const c=e.target.closest("[data-c]");if(c){cur=c.dataset.c;shown=20;renderCats();render();window.scrollTo({top:0,behavior:"smooth"});return}
  const m=e.target.closest("[data-i]");if(m){const b=document.getElementById("b"+m.dataset.i);b.classList.toggle("open");m.textContent=b.classList.contains("open")?"收起":"展开全文";return}
- const cp=e.target.closest("[data-copy]");if(cp){const x=window.__rows[+cp.dataset.copy];const txt=x.t+"
-
-"+x.b;
+ const cp=e.target.closest("[data-copy]");if(cp){const x=window.__rows[+cp.dataset.copy];const txt=x.t+String.fromCharCode(10,10)+x.b;
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(()=>toast("已复制，去粘贴吧")).catch(()=>fallback(txt))}else fallback(txt);return}
  if(e.target.id==="loadMore"){shown+=20;render()}
 });
